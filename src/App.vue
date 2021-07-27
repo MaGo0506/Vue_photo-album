@@ -13,14 +13,14 @@ export default {
   name: 'app',
   components: {
     'album-tabs': albumTabs,
-    'loader': loader,
+    loader,
   },
-  data () {
+  data() {
     return {
 
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style lang="scss">

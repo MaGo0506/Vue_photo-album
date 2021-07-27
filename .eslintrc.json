@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-        "plugin:vue/essential",
+        "plugin:vue/recommended",
         "airbnb-base"
     ],
     "parserOptions": {
@@ -15,5 +15,8 @@
         "vue"
     ],
     "rules": {
+        "indent": ["error", "tab"],
+        "linebreak-style": ["error", "windows"],
+        "no-tabs": 0
     }
 }

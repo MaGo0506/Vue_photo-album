@@ -1,69 +1,109 @@
-/* eslint-disable linebreak-style */
 <template>
   <div>
-        <h1 class="title">Albums</h1>
+    <h1 class="title">
+      Albums
+    </h1>
     <div id="show-blocks">
-        <div @click.prevent="isActive(block); showToggle()"
-         v-rainbow v-for="block in blocks" v-bind:data-id="block.id"
-         :key="block.id" :class="`single-block ${active == block.id ? 'active' : ''}`">
-            <p @click.prevent="isActive(block); showToggle()">{{ block.id }}. {{ block.title }}</p>
-        </div>
+      <div
+        v-for="block in blocks"
+        :key="block.id"
+        v-rainbow
+        :data-id="block.id"
+        :class="`single-block ${active == block.id ? 'active' : ''}`"
+        @click.prevent="isActive(block); showToggle()"
+      >
+        <p @click.prevent="isActive(block); showToggle()">
+          {{ block.id }}. {{ block.title }}
+        </p>
+      </div>
     </div>
-       <div id="show-photos">
-            <div v-if="hide" id="loader">
-                <img  src="../loader.gif" alt="Loading..." />
-            </div>
-         <div v-for="photo in photos" :class="`photoCard`" :key="photo.id" v-bind:id="photo.id">
-                <h1 class="title">Photos</h1>
-                <img class=' cardImage rounded' :src="photo.thumbnailUrl">
-                <p class='cardText'>{{ photo.albumId }}. {{ photo.title }}</p>
-                <button  @click.prevent="modal = !modal; showModal(photo)">See Image</button>
-             <div v-if="modal" :class="`modalWrapper ${active == photo.id ? 'active' : ''}`">
-                <p @click.prevent="modal = !modal" class="closeBtn">X</p>
-                <img class="modalImage" :src="photo.thumbnailUrl">
-            </div>
+    <div id="show-photos">
+      <div
+        v-if="hide"
+        id="loader"
+      >
+        <img
+          src="../loader.gif"
+          alt="Loading..."
+        >
+      </div>
+      <div
+        v-for="photo in photos"
+        :id="photo.id"
+        :key="photo.id"
+        :class="`photoCard`"
+      >
+        <h1 class="title">
+          Photos
+        </h1>
+        <img
+          class=" cardImage rounded"
+          :src="photo.thumbnailUrl"
+        >
+        <p class="cardText">
+          {{ photo.albumId }}. {{ photo.title }}
+        </p>
+        <button @click.prevent="modal = !modal; showModal(photo)">
+          See Image
+        </button>
+        <div
+          v-if="modal"
+          :class="`modalWrapper ${active == photo.id ? 'active' : ''}`"
+        >
+          <p
+            class="closeBtn"
+            @click.prevent="modal = !modal"
+          >
+            X
+          </p>
+          <img
+            class="modalImage"
+            :src="photo.thumbnailUrl"
+          >
         </div>
-     <div :class="`shadow ${modal}`"></div>
+      </div>
+      <div :class="`shadow ${modal}`" />
     </div>
   </div>
 </template>
 
 <script>
+/* eslint-disable linebreak-style */
 
 export default {
-  data() {
-    return {
-      active: 0,
-      hide: false,
-      modal: false,
-    };
-  },
-  methods: {
-    isActive(block) {
-      this.active = block.id;
-      this.$store.dispatch('loadPhotos', block.id);
-    },
-    showToggle() {
-      this.hide = true;
-      setTimeout(() => {
-        this.hide = false;
-      }, 2000);
-    },
-    showModal(photo) {
-      this.active = photo.id;
-    },
-  },
-  computed: {
-    blocks() {
-      return this.$store.state.blocks;
-    },
-    photos() {
-      return this.$store.state.photos;
-    },
-  },
-  mounted() {
-    this.$store.dispatch('loadBlocks');
-  },
+	data() {
+		return {
+			active: 0,
+			hide: false,
+			modal: false,
+		};
+	},
+	computed: {
+		blocks() {
+			return this.$store.state.blocks;
+		},
+		photos() {
+			return this.$store.state.photos;
+		},
+	},
+	mounted() {
+		this.$store.dispatch('loadBlocks');
+	},
+	methods: {
+		isActive(block) {
+			this.active = block.id;
+			this.$store.dispatch('loadPhotos', block.id);
+		},
+		showToggle() {
+			this.hide = true;
+			setTimeout(() => {
+				this.hide = false;
+			}, 2000);
+		},
+		showModal(photo) {
+			this.active = photo.id;
+		},
+	},
 };
 </script>
 
