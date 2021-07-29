@@ -1,32 +1,37 @@
 <template>
-	<div v-if="show" class="loader">
-	    <img src="../loader.gif" alt="Loading..." />
-	</div>
+  <div
+    v-if="show"
+    class="loader"
+  >
+    <img
+      src="../loader.gif"
+      alt="Loading..."
+    >
+  </div>
 </template>
 
 <script>
-
 export default {
-  name: 'loader',
-  data() {
-    return {
-      show: true,
-    };
-  },
-  mounted() {
-    if (this.show) this.showToggle();
-  },
-  methods: {
-    showToggle() {
-      setTimeout(() => {
-        this.show = false;
-      }, 3000);
-    },
-  },
+	name: 'Loader',
+	data() {
+		return {
+			show: true,
+		};
+	},
+	mounted() {
+		if (this.show) this.showToggle();
+	},
+	methods: {
+		showToggle() {
+			setTimeout(() => {
+				this.show = false;
+			}, 3000);
+		},
+	},
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .loader {
     position: fixed;

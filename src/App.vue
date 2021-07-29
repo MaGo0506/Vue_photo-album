@@ -12,8 +12,13 @@ import loader from './components/loader.vue';
 export default {
   name: 'app',
   components: {
+<<<<<<< HEAD
     'user-search': userSearch,
     'loader': loader,
+=======
+    'album-tabs': albumTabs,
+    loader,
+>>>>>>> b42557dcac50068797ea61c56b31c98cc6854ab1
   },
   data() {
     return {
