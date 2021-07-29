@@ -1,26 +1,26 @@
 <template>
   <div id="app">
+    <user-search></user-search>
     <loader></loader>
-    <album-tabs></album-tabs>
   </div>
 </template>
 
 <script>
-import albumTabs from './components/albumTabs.vue';
+import userSearch from './components/userSearch.vue';
 import loader from './components/loader.vue';
 
 export default {
   name: 'app',
   components: {
-    'album-tabs': albumTabs,
+    'user-search': userSearch,
     'loader': loader,
   },
-  data () {
+  data() {
     return {
 
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style lang="scss">
