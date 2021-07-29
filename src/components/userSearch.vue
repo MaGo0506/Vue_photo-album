@@ -1,32 +1,39 @@
 <template>
   <div id="search-users">
-     <h1>Search for Users</h1>
-     <input type="text" v-model="search" placeholder="Search users...">
-     <div class="matchList">
-       <a target="_blank" :href="linkTo(capitalizeWords(search))">{{ search }}</a>
-       </div>
+    <h1>Search for Users</h1>
+    <input
+      v-model="search"
+      type="text"
+      placeholder="Search users..."
+    >
+    <div class="matchList">
+      <a
+        target="_blank"
+        :href="linkTo(capitalizeWords(search))"
+      >{{ search }}</a>
+    </div>
   </div>
 </template>
 
 <script>
 
 export default {
-  data() {
-    return {
-      search: '',
-    }
-  },
-  methods: {
-    linkTo(searchInput) {
-      const link = `https://jsonplaceholder.typicode.com/users?username=${searchInput}`;
-      return link;
-    },
-    capitalizeWords(string) {
-      return string.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
-    }
-  },
-  computed: {
-  },
+	data() {
+		return {
+			search: '',
+		};
+	},
+	computed: {
+	},
+	methods: {
+		linkTo(searchInput) {
+			const link = `https://jsonplaceholder.typicode.com/users?username=${searchInput}`;
+			return link;
+		},
+		capitalizeWords(string) {
+			return string.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase());
+		},
+	},
 };
 </script>
 
