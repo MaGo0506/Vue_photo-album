@@ -4,13 +4,10 @@
 
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import Vuelidate from 'vuelidate';
 import App from './App.vue';
 import { store } from './store/store';
 
-
 Vue.use(VueResource);
-Vue.use(Vuelidate);
 
 Vue.directive('rainbow', {
 	bind(el, binding, vnode) {

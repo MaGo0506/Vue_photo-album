@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <loader />
-    <form-validation />
+    <album-tabs></album-tabs>
   </div>
 </template>
 
 <script>
-import formValidation from './components/formValidation.vue';
+import albumTabs from './components/albumTabs.vue';
 import loader from './components/loader.vue';
 
 export default {
 	name: 'App',
 	components: {
-		'form-validation': formValidation,
+		'album-tabs': albumTabs,
 		loader,
 	},
 	data() {
