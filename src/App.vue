@@ -36,7 +36,6 @@ body {
   height: 100%;
   width: 100%;
   font-family: 'Roboto', sans-serif;
-  background: rgb(219, 53, 53);
   display: inline-flex;
   justify-content: center;
 
